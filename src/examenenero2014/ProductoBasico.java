@@ -6,11 +6,11 @@ public class ProductoBasico implements Producto {
     private String descripcion;
     private double precio;
     
-    public ProductoBasico(int c, String n, String d, double p){
-        codigo = c;
-        nombre = n;
-        descripcion = d;
-        precio = p;
+    public ProductoBasico(int codigo, String nombre, String descripcion, double precio){
+        this.codigo = codigo;
+        this.nombre = nombre;
+        this.descripcion = descripcion;
+        this.precio = precio;
     }
     
     public int getCodigo(){
@@ -30,5 +30,15 @@ public class ProductoBasico implements Producto {
     }    
     public double getDescuento(){
         return 0;
+    }
+    
+    public boolean equals(Object p) {
+        if(!(p instanceof ProductoBasico))return false;
+        
+        return codigo == ((ProductoBasico) p).getCodigo();
+    }
+    
+    public int hashCode(){
+        return codigo;
     }
 }

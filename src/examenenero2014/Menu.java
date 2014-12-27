@@ -5,14 +5,14 @@ public class Menu implements Producto{
     
     private int codigo;
     private String nombre;
-    private ArrayList<Producto> arrayReferencia;
+    protected ArrayList<Producto> arrayContenido;
     private double precio;
     
-    public Menu(int c, String n, ArrayList<Producto> array,double p){
-        codigo = c;
-        nombre = n;
-        arrayReferencia = array;
-        precio = p;
+    public Menu(int codigo, String nombre, ArrayList<Producto> contenido, double precio){
+        this.codigo = codigo;
+        this.nombre = nombre;
+        this.arrayContenido = contenido;
+        this.precio = precio;
     }
 
     public int getCodigo() {
@@ -25,12 +25,12 @@ public class Menu implements Producto{
 
     public String getDescripcion() {
         String lista = "";
-        for(int i = 0; i < arrayReferencia.size(); i++ ){
-           if( i == arrayReferencia.size()-1){
-                lista = lista + arrayReferencia.get(i).getNombre();    
+        for(int i = 0; i < arrayContenido.size(); i++ ){
+           if( i == arrayContenido.size()-1){
+                lista = lista + arrayContenido.get(i).getNombre();    
            }
            else{
-                lista = lista + arrayReferencia.get(i).getNombre() + ",";    
+                lista = lista + arrayContenido.get(i).getNombre() + ",";    
            }
         }
         return lista;
@@ -48,14 +48,11 @@ public class Menu implements Producto{
         double descuento = 0;
         double precioVenta = 0;
         
-       for( int i = 0; i < arrayReferencia.size(); i++){
-           descuento = descuento + arrayReferencia.get(i).getDescuento();
-           precioVenta = precioVenta + arrayReferencia.get(i).getPrecio();
+       for( int i = 0; i < arrayContenido.size(); i++){
+           descuento = descuento + arrayContenido.get(i).getDescuento();
+           precioVenta = precioVenta + arrayContenido.get(i).getPrecio();
        }
        return descuento + precioVenta - precio;
        
     }
-    
-    
-    
 }
